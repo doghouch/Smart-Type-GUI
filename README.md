@@ -2,6 +2,7 @@
 A smart tool to improve touch typing accuracy and speed. Built using **Python** and **Tkinter GUI** for the **MLH Same Home Different Hacks 2020** hackathon.
 The tool generates prompts with varying word lengths (lengths can be adjusted by using the slider) based on areas of improvement.
 A video of the tool can be seen used here: https://youtu.be/rB3qmfeggIc
+Devpost: https://devpost.com/software/smart-type-assistant
 <br>
 ### Collaborators
 * https://github.com/ammar-s847 
