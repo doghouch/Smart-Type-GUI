@@ -7,8 +7,10 @@ import string
 from tkinter import *
 import tkinter.font as tkFont
 
+MISSPELT_FILE = "res" + os.path.sep + "misspelt.txt"
+
 def get_dictionary(path):  # takes in a file path path and returns a list, content
-    f = open("dictionary\\" + path, "r")
+    f = open("dictionary" + os.path.sep + path, "r")
 
     content = f.readlines()
     f.close()
@@ -19,7 +21,7 @@ def get_mistakes():     # searches for letters where user made most mistakes
     nums = {}
     letters = []
 
-    with open('res\\misspelt.txt', 'r') as file:     # stores all data in data file
+    with open(MISSPELT_FILE, "r") as file:     # stores all data in data file
         data = file.readlines()                 # in list to be changed
 
     for i in range(0, len(data)):
@@ -181,10 +183,10 @@ def update_gui_stats():  # updates the gui labels for wpm and accuracy
         threading.Timer(1.0, update_gui_stats).start()
 
 def misspelt_letters(mis_char):
-    mis_read = open("res\\misspelt.txt", "r")    # initializes data file
+    mis_read = open(MISSPELT_FILE, "r")    # initializes data file
     seek_counter = 0    # counter to seek current location in file
 
-    with open('res\\misspelt.txt', 'r') as file:     # stores all data in data file
+    with open(MISSPELT_FILE, "r") as file:     # stores all data in data file
         data = file.readlines()                 # in list to be changed
 
     for letter in mis_read.readlines():     # loops through data file from starting letter to end
@@ -193,7 +195,7 @@ def misspelt_letters(mis_char):
             data[seek_counter] = letter[0] + str(counter_mis) + "\n"    # stores misspelt character in data list
         seek_counter += 1   # added 1 to seek as it goes to next line
 
-    with open('res\\misspelt.txt', 'w') as file:     # stores new data list
+    with open(MISSPELT_FILE, "w") as file:     # stores new data list
         file.writelines(data)                   # in data file
 
     mis_read.close()
@@ -221,10 +223,9 @@ def stop_game():
     accuracy_label.config(fg="green")
 
 def clear_misspelt():
-    path = "res\\misspelt.txt"
-    file = open(path, "w+")
+    file = open(MISSPELT_FILE, "w+")
 
-    if os.path.isfile(path):
+    if os.path.isfile(MISSPELT_FILE):
         file.truncate(0)
     
     alphabet_string = string.ascii_lowercase
